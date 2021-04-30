@@ -87,7 +87,7 @@ export interface SwaggerInfo {
 
 export type SwaggerPaths = { [path: string]: SwaggerPathRequestTypes };
 export type SwaggerPathRequestTypes = { [requestType: string]: ControllerMethod };
-export type SwaggerDefinitions = { [definitionName: string]: SwaggerDefinition };
+export type SwaggerComponents = { schemas: { [definitionName: string]: SwaggerDefinition } };
 
 export interface Swagger {
   swagger: string;
@@ -96,5 +96,5 @@ export interface Swagger {
   basePath: string;
   tags: SwaggerTag[];
   paths: SwaggerPaths;
-  definitions: SwaggerDefinitions;
+  components: SwaggerComponents;
 }

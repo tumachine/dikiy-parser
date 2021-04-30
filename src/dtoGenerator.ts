@@ -23,8 +23,8 @@ export class DikiyParser {
   }
 
   generateDtos(data: Swagger): void {
-    const { definitions } = data;
-    for (const def of Object.values(definitions)) {
+    const { components } = data;
+    for (const def of Object.values(components.schemas)) {
       const definition = this.getDefinition(def);
 
       try {
@@ -136,7 +136,7 @@ export class DikiyParser {
   }
 
   private matchDtoName(definition: string): string {
-    const matches = /[^?#/definitions/](.*)/.exec(definition);
+    const matches = /[^?#/components/schemas/](.*)/.exec(definition);
     if (matches !== null) {
       const match = matches[0].trim();
       if (/.*«.*»/.exec(match)) {

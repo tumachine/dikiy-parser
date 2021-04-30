@@ -30,6 +30,6 @@ async function generate(dataPromise: Promise<string>, generateOptions: GenerateO
   generateJsStructure(JSON.parse(data), generateOptions);
 }
 
-generate(getJsonFromRequest('http://localhost:8080/v2/api-docs'), { services: false, dtos: true })
+generate(getJsonFromRequest('http://localhost:8080/v3/api-docs'), { services: false, dtos: true })
   .then(() => console.log('done'))
   .catch(err => console.error(err));
