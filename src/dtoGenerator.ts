@@ -140,7 +140,13 @@ export class DikiyParser {
     if (matches !== null) {
       const match = matches[0].trim();
       if (/.*«.*»/.exec(match)) {
-        throw new Error(`Found unacceptable DTO: ${match}`);
+        if (match.startsWith('PaginationResponse') || match.startsWith('Page')) {
+          throw new Error(`Found unacceptable DTO: ${match}`);
+        }
+        const first = /(.*)«(.*)»/.exec(match);
+        if (first !== null && first.length > 1) {
+          return first[1];
+        }
       }
       return match;
     } else {
